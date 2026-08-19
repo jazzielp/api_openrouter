@@ -2,6 +2,7 @@ import zod from "zod";
 
 const envSchema = zod.object({
   PORT: zod.coerce.number().int().default(3000),
+  GROQ_API_KEY: zod.string(),
 });
 
 export const env = envSchema.parse(process.env);
