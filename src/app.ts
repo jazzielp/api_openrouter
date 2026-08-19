@@ -1,4 +1,6 @@
 import express, { Request, Response } from "express";
+import zod from "zod";
+
 import { groqService } from "./services/groq";
 import { AIService } from "./types/types";
 
@@ -12,6 +14,10 @@ function nextService() {
   return service;
 }
 
+const analyzeJobOfferBodySchema = zod.object({
+  offer: zod.string().min(1),
+});
+
 export function createApp() {
   const app = express();
   app.use(express.json());
@@ -20,17 +26,25 @@ export function createApp() {
     res.send("Hello World");
   });
 
-  app.post("/chat", async (req: Request, res: Response) => {
-    const { messages } = req.body;
-    const service = nextService();
-    const stream = await service.chat(messages);
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
-    for await (const chunk of stream) {
-      res.write(chunk);
+  app.post("/job-offer", async (req: Request, res: Response) => {
+    const body = analyzeJobOfferBodySchema.safeParse(req.body);
+
+    if (!body.success) {
+      res.status(400).json({
+        error: "Request body must include a non-empty 'offer' string",
+      });
+      return;
     }
-    res.end();
+
+    try {
+      const service = nextService();
+      console.log("service", service.name);
+      const jobOffer = await service.analyzeJobOffer(body.data.offer);
+      res.json(jobOffer);
+    } catch (error) {
+      console.error("Failed to analyze job offer:", error);
+      res.status(502).json({ error: "Failed to analyze job offer" });
+    }
   });
 
   return app;

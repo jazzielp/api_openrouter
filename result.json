@@ -1,0 +1,32 @@
+{
+  "jobTitle": "Desarrollador Front End (React Js) Sr",
+  "company": "CITI",
+  "mainResponsibilities": [
+    "Desarrollo de interfaces modernas, responsivas y accesibles con React.",
+    "Implementación de arquitecturas frontend con enfoque en componentización y buenas prácticas.",
+    "Gestión de estado global con Redux, Context API u otras herramientas.",
+    "Colaboración con equipos de backend, UX, QA y DevOps.",
+    "Documentación técnica y participación en revisiones de código."
+  ],
+  "requiredTechnologies": [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "React Router",
+    "Tailwind CSS",
+    "Redux",
+    "Context API",
+    "Microfrontends",
+    "Module Federation",
+    "Jest",
+    "React Testing Library",
+    "React Hook Form",
+    "i18next",
+    "WCAG"
+  ],
+  "optionalTechnologies": ["Azure DevOps"],
+  "languages": ["TypeScript", "JavaScript"],
+  "workMode": "Remoto",
+  "salary": null,
+  "benefits": []
+}

@@ -1,9 +1,16 @@
-export interface ChatMessage {
-  role: "user" | "assistant" | "system";
-  content: string;
+export interface JobOffer {
+  jobTitle: string | null;
+  company: string | null;
+  mainResponsibilities: string[];
+  requiredTechnologies: string[];
+  optionalTechnologies: string[];
+  languages: string[];
+  workMode: string | null;
+  salary: string | null;
+  benefits: string[];
 }
 
 export interface AIService {
   name: string;
-  chat: (messages: ChatMessage[]) => Promise<AsyncIterable<string>>;
+  analyzeJobOffer: (offerText: string) => Promise<JobOffer>;
 }
