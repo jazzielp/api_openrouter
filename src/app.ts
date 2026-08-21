@@ -2,10 +2,12 @@ import express, { Request, Response } from "express";
 import zod from "zod";
 
 import { groqService } from "./services/groq";
+import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
 import { AIService } from "./types/types";
 
-const services: AIService[] = [groqService, openaiService];
+// const services: AIService[] = [groqService, openaiService, ollamaService];
+const services: AIService[] = [openaiService];
 
 let currentServiceIndex = 0;
 
