@@ -5,7 +5,7 @@ import { env } from "../config/env";
 import { JobOffer } from "../types/types";
 import { JOB_OFFER_SYSTEM_PROMPT, jobOfferSchema } from "./job-offer";
 
-const MODEL_NAME = "gpt-5.6";
+const MODEL_NAME = "gpt-5.6-luna";
 
 let client: OpenAI | null = null;
 

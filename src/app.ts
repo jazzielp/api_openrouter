@@ -1,16 +1,11 @@
 import express, { Request, Response } from "express";
 import zod from "zod";
 
-import { env } from "./config/env";
 import { groqService } from "./services/groq";
 import { openaiService } from "./services/openai";
 import { AIService } from "./types/types";
 
-const services: AIService[] = [groqService];
-
-if (env.OPENAI_API_KEY) {
-  services.push(openaiService);
-}
+const services: AIService[] = [groqService, openaiService];
 
 let currentServiceIndex = 0;
 
