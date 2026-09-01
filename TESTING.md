@@ -21,11 +21,31 @@ curl -X POST http://localhost:3005/job-offer \
 
 | Código | Significado |
 |--------|-------------|
-| 200    | JSON `JobOffer` con los datos extraídos |
+| 200    | JSON `JobOffer` con los datos extraídos y el campo `provider` del servicio que respondió |
 | 400    | Body inválido: falta `offer` o el JSON está malformado |
-| 502    | La IA no devolvió un JSON válido |
+| 502    | Todos los proveedores (Groq, OpenAI y Ollama) fallaron |
+
+## Ejemplo de respuesta exitosa
+
+```json
+{
+  "provider": "groq",
+  "jobTitle": "Frontend Developer",
+  "company": "CITI",
+  "mainResponsibilities": [],
+  "requiredTechnologies": ["TypeScript", "React", "Tailwind CSS"],
+  "optionalTechnologies": ["Azure DevOps"],
+  "languages": ["TypeScript"],
+  "workMode": "Remoto",
+  "salary": null,
+  "benefits": []
+}
+```
+
+`provider` indica qué servicio produjo la respuesta (`groq`, `openai` u `ollama`). El resto de campos coinciden con `JobOffer`.
 
 ## Notas
 
 - Los saltos de línea deben viajar escapados como `\n` dentro del string JSON; `JSON.stringify` lo hace automáticamente.
 - `curl -d @archivo` recorta silenciosamente los saltos de línea del archivo; para mandarlo tal cual usar `--data-binary @archivo`.
+- Cada solicitud empieza por un proveedor distinto (round-robin). Si ese proveedor falla, se prueban los demás antes de devolver `502`.
