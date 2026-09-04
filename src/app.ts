@@ -8,10 +8,11 @@ import { mistralService } from "./services/mistral";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
 import { openrouterService } from "./services/openrouter";
+import { sambanovaService } from "./services/sambanova";
 import { AIService } from "./types/types";
 
 // const services: AIService[] = [groqService, openaiService, ollamaService];
-const services: AIService[] = [googleService];
+const services: AIService[] = [sambanovaService];
 
 let currentServiceIndex = 0;
 
