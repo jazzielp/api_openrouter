@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import zod from "zod";
 
 import { cerebrasService } from "./services/cerebras";
+import { deepinfraService } from "./services/deepinfra";
 import { groqService } from "./services/groq";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
@@ -10,7 +11,7 @@ import { togetherService } from "./services/together";
 import { AIService } from "./types/types";
 
 // const services: AIService[] = [groqService, openaiService, ollamaService];
-const services: AIService[] = [togetherService];
+const services: AIService[] = [deepinfraService];
 
 let currentServiceIndex = 0;
 
