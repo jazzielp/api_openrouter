@@ -19,10 +19,12 @@
   },
   "type": "module",
   "dependencies": {
+    "@cerebras/cerebras_cloud_sdk": "^1.91.0",
     "@openrouter/sdk": "^1.2.97",
     "express": "^5.2.1",
     "groq-sdk": "^1.5.0",
     "openai": "^7.5.0",
+    "together-ai": "^0.50.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

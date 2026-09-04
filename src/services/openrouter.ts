@@ -13,7 +13,6 @@ const openrouter = new OpenRouter({
 const JOB_OFFER_MODELS = [
   "google/gemma-4-31b-it:free",
   "google/gemma-4-26b-a4b-it:free",
-  "openai/gpt-oss-20b:free",
 ];
 
 export const openrouterService = {
@@ -31,12 +30,7 @@ export const openrouterService = {
         maxTokens: 2048,
         stream: false,
         responseFormat: {
-          type: "json_schema",
-          jsonSchema: {
-            name: "job_offer",
-            strict: true,
-            schema: jobOfferSchema,
-          },
+          type: "json_object",
         },
         provider: {
           requireParameters: true,

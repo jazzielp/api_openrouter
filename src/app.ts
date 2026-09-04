@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import zod from "zod";
 
+import { cerebrasService } from "./services/cerebras";
 import { groqService } from "./services/groq";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
@@ -8,7 +9,7 @@ import { openrouterService } from "./services/openrouter";
 import { AIService } from "./types/types";
 
 // const services: AIService[] = [groqService, openaiService, ollamaService];
-const services: AIService[] = [openrouterService, groqService];
+const services: AIService[] = [cerebrasService];
 
 let currentServiceIndex = 0;
 
