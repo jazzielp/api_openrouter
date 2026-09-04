@@ -8,6 +8,7 @@ const envSchema = zod.object({
   CEREBRAS_API_KEY: zod.string().optional(),
   TOGETHER_API_KEY: zod.string().optional(),
   DEEPINFRA_API_KEY: zod.string().optional(),
+  MISTRAL_API_KEY: zod.string().optional(),
   OLLAMA_BASE_URL: zod.string().default("http://localhost:11434"),
 });
 

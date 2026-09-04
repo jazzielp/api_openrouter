@@ -4,6 +4,7 @@ import zod from "zod";
 import { cerebrasService } from "./services/cerebras";
 import { deepinfraService } from "./services/deepinfra";
 import { groqService } from "./services/groq";
+import { mistralService } from "./services/mistral";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
 import { openrouterService } from "./services/openrouter";
@@ -11,7 +12,7 @@ import { togetherService } from "./services/together";
 import { AIService } from "./types/types";
 
 // const services: AIService[] = [groqService, openaiService, ollamaService];
-const services: AIService[] = [deepinfraService];
+const services: AIService[] = [mistralService];
 
 let currentServiceIndex = 0;
 
