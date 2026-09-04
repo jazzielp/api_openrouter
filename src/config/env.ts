@@ -6,6 +6,7 @@ const envSchema = zod.object({
   OPENAI_API_KEY: zod.string().optional(),
   OPENROUTER_API_KEY: zod.string().optional(),
   CEREBRAS_API_KEY: zod.string().optional(),
+  TOGETHER_API_KEY: zod.string().optional(),
   OLLAMA_BASE_URL: zod.string().default("http://localhost:11434"),
 });
 

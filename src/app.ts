@@ -6,10 +6,11 @@ import { groqService } from "./services/groq";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
 import { openrouterService } from "./services/openrouter";
+import { togetherService } from "./services/together";
 import { AIService } from "./types/types";
 
 // const services: AIService[] = [groqService, openaiService, ollamaService];
-const services: AIService[] = [cerebrasService];
+const services: AIService[] = [togetherService];
 
 let currentServiceIndex = 0;
 
