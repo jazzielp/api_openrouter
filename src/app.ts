@@ -1,26 +1,20 @@
 import express, { Request, Response } from "express";
 import zod from "zod";
 
-import { cerebrasService } from "./services/cerebras";
-import { googleService } from "./services/google";
 import { groqService } from "./services/groq";
-import { mistralService } from "./services/mistral";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
-import { openrouterService } from "./services/openrouter";
 import { sambanovaService } from "./services/sambanova";
 import { AIService } from "./types/types";
 
-// const services: AIService[] = [groqService, openaiService, ollamaService];
-const services: AIService[] = [sambanovaService];
+const services: AIService[] = [
+  groqService,
+  openaiService,
+  ollamaService,
+  sambanovaService,
+];
 
 let currentServiceIndex = 0;
-
-function nextService() {
-  const service = services[currentServiceIndex];
-  currentServiceIndex = (currentServiceIndex + 1) % services.length;
-  return service;
-}
 
 const analyzeJobOfferBodySchema = zod.object({
   offer: zod.string().min(1),
@@ -45,10 +39,28 @@ export function createApp() {
     }
 
     try {
-      const service = nextService();
-      console.log("service", service.name);
-      const jobOffer = await service.analyzeJobOffer(body.data.offer);
-      res.json(jobOffer);
+      let lastError: unknown = null;
+      const startIndex = currentServiceIndex;
+
+      for (let i = 0; i < services.length; i++) {
+        const serviceIndex = (startIndex + i) % services.length;
+        const service = services[serviceIndex];
+
+        try {
+          console.log("Trying service:", service.name);
+          const jobOffer = await service.analyzeJobOffer(body.data.offer);
+          console.log("Service succeeded:", service.name);
+          currentServiceIndex = (serviceIndex + 1) % services.length;
+          res.json(jobOffer);
+          return;
+        } catch (error) {
+          console.error(`Service ${service.name} failed:`, error);
+          lastError = error;
+        }
+      }
+
+      console.error("All services failed. Last error:", lastError);
+      res.status(502).json({ error: "Failed to analyze job offer" });
     } catch (error) {
       console.error("Failed to analyze job offer:", error);
       res.status(502).json({ error: "Failed to analyze job offer" });
