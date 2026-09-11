@@ -4,6 +4,7 @@ import zod from "zod";
 import { groqService } from "./services/groq";
 import { ollamaService } from "./services/ollama";
 import { openaiService } from "./services/openai";
+import { orcarouterService } from "./services/orcarouter";
 import { sambanovaService } from "./services/sambanova";
 import { AIService } from "./types/types";
 
@@ -12,6 +13,7 @@ const services: AIService[] = [
   openaiService,
   ollamaService,
   sambanovaService,
+  orcarouterService,
 ];
 
 let currentServiceIndex = 0;

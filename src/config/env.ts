@@ -10,6 +10,7 @@ const envSchema = zod.object({
   MISTRAL_API_KEY: zod.string().optional(),
   SAMBANOVA_API_KEY: zod.string().optional(),
   OLLAMA_BASE_URL: zod.string().default("http://localhost:11434"),
+  ORCAROUTER_API_KEY: zod.string().optional(),
 });
 
 export const env = envSchema.parse(process.env);
