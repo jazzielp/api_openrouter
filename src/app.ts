@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import zod from "zod";
 
 import { groqService } from "./services/groq";
-import { ollamaService } from "./services/ollama";
+import { cerebrasService } from "./services/cerebras";
 import { openaiService } from "./services/openai";
 import { orcarouterService } from "./services/orcarouter";
 import { sambanovaService } from "./services/sambanova";
@@ -11,7 +11,7 @@ import { AIService } from "./types/types";
 const services: AIService[] = [
   groqService,
   openaiService,
-  ollamaService,
+  cerebrasService,
   sambanovaService,
   orcarouterService,
 ];
