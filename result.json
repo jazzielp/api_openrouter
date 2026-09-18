@@ -8,7 +8,7 @@
     "Colaboración con equipos de backend, UX, QA y DevOps.",
     "Documentación técnica y participación en revisiones de código."
   ],
-  "requiredTechnologies": [
+  "requiredSkills": [
     "TypeScript",
     "JavaScript",
     "React",
@@ -22,11 +22,18 @@
     "React Testing Library",
     "React Hook Form",
     "i18next",
-    "WCAG"
+    "WCAG",
+    "Pruebas unitarias y de integración",
+    "Comunicación efectiva con equipos multidisciplinarios",
+    "Pensamiento analítico y resolución de problemas",
+    "Proactividad y autonomía técnica",
+    "Adaptabilidad a nuevas tecnologías y metodologías"
   ],
-  "optionalTechnologies": ["Azure DevOps"],
-  "languages": ["TypeScript", "JavaScript"],
-  "workMode": "Remoto",
+  "optionalSkills": [
+    "Azure DevOps"
+  ],
+  "languages": [],
+  "workMode": "En remoto",
   "salary": null,
   "benefits": []
 }
